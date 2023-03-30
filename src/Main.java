@@ -1,64 +1,75 @@
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
+		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		String coluna = sc.next();
-		String tipo = sc.next();
-		String alimento = sc.next();
-		String animal = null; //Exercício não especifica como tratar exceções, decidi portanto retornar null.
-		
-		String[] colunas = {"vertebrado", "invertebrado"};
-		String[] tipos = {"ave", "mamifero", "inseto", "anelideo"};
-		String[] alimentos = {"hematofago", "herbivoro", "onivoro", "carnivoro"};
+		double A = sc.nextDouble();
+		double B = sc.nextDouble();
+		double C = sc.nextDouble();
+		double menor, meio, maior;
+		boolean formaTriangulo = true;
 
-		if (coluna.equals(colunas[0])) {
-			if (tipo.equals(tipos[0])) {
-				if (alimento.equals(alimentos[3])) {
-					animal = "aguia";
-				}
-				else if (alimento.equals(alimentos[2])) {
-					animal = "pombo";
-				}
+		if (A > B && A > C) {
+			maior = A;
+			if (B > C) {
+				meio = B;
+				menor = C;
+			} else {
+				meio = C;
+				menor = B;
 			}
-			else if (tipo.equals(tipos[1])) {
-				if (alimento.equals(alimentos[2])) {
-					animal = "homem";
-				}
-				else if (alimento.equals(alimentos[1])){
-					animal = "vaca";
-				}
-
+		} else if (B > A && B > C) {
+			maior = B;
+			if (A > C) {
+				meio = A;
+				menor = C;
+			} else {
+				meio = C;
+				menor = A;
 			}
 		}
-		else if (coluna.equals(colunas[1])) {
-			if (tipo.equals(tipos[2])) {
-				if (alimento.equals(alimentos[0])) {
-					animal = "pulga";
-				}
-				else if (alimento.equals(alimentos[1])) {
-					animal = "lagarta";
-				}
 
-			}
-			else if (tipo.equals(tipos[3])) {
-				if (alimento.equals(alimentos[0])) {
-					animal = "sanguessuga";
-				}
-				else if (alimento.equals(alimentos[2])) {
-					animal = "minhoca";
-
-				}
-
+		else {
+			maior = C;
+			if (A > B) {
+				meio = A;
+				menor = B;
+			} else {
+				meio = B;
+				menor = A;
 			}
 		}
-		
-		System.out.println(animal);
 
+		if (maior >= meio + menor) {
+			System.out.println("NAO FORMA TRIANGULO");
+			formaTriangulo = false;
+		}
+
+		if (formaTriangulo) {
+
+			if (Math.pow(maior, 2) == Math.pow(meio, 2) + Math.pow(menor, 2)) {
+				System.out.println("TRIANGULO RETANGULO");
+			}
+			if (Math.pow(maior, 2) > (Math.pow(meio, 2) + Math.pow(menor, 2))) {
+				System.out.println("TRIANGULO OBTUSANGULO");
+			}
+			if (Math.pow(maior, 2) < (Math.pow(meio, 2) + Math.pow(menor, 2))) {
+				System.out.println("TRIANGULO ACUTANGULO");
+			}
+			if (A == B && A == C) {
+				System.out.println("TRIANGULO EQUILATERO");
+			}
+
+			if ((A == B && A != C) || (A == C && A != B) || (B == C && B != A)) {
+				System.out.println("TRIANGULO ISOSCELES");
+			}
+
+		}
 		sc.close();
 	}
-
 }
