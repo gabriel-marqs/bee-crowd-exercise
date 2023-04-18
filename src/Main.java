@@ -1,27 +1,24 @@
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.Locale;
 
-import javax.swing.text.DateFormatter;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
+		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		int num;
-
-		do {
-			num = sc.nextInt();
-		} while (num < 1 || num > 12);
-
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMMM", new java.util.Locale("en"));
-		String mes = fmt.format(LocalDate.of(2000, num, 1));
-
-		System.out.println(mes);
-
+		int qtd = 0;
+		
+		for (int i = 0; i < 6; i++) {
+			double n = sc.nextDouble();
+			if (n > 0) {
+				qtd += 1;
+			}
+		}
+		
+		System.out.println(qtd + " valores positivos");	
+		
 		sc.close();
-
 	}
 }
