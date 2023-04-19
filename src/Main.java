@@ -1,74 +1,36 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
+		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-
-		String inputDayI = sc.nextLine();
-		int posEspaco = inputDayI.indexOf(" ");
-		String nStr = inputDayI.substring(posEspaco + 1);
-		int daysI = Integer.parseInt(nStr);
-
-		String inputTimeI = sc.nextLine();
-		String[] partes = inputTimeI.split(":");
-
-		int hoursI = Integer.parseInt(partes[0].trim());
-		int minutesI = Integer.parseInt(partes[1].trim());
-		int secondsI = Integer.parseInt(partes[2].trim());
-
-		String inputDayF = sc.nextLine();
-		posEspaco = inputDayF.indexOf(" ");
-		nStr = inputDayF.substring(posEspaco + 1);
-		int daysF = Integer.parseInt(nStr);
-
-		String inputTimeF = sc.nextLine();
-		partes = inputTimeF.split(":");
-
-		int hoursF = Integer.parseInt(partes[0].trim());
-		int minutesF = Integer.parseInt(partes[1].trim());
-		int secondsF = Integer.parseInt(partes[2].trim());
-
-		int daysT = daysF - daysI;
+		List<Double> list = new ArrayList<>();
+		int qtd = 0;
+		double media = 0;
 		
-		int hoursT = hoursF - hoursI;
-		if (hoursF < hoursI) {
-			hoursT += 24;
-			daysT -= 1;
-		}
-
-		int minutesT = minutesF - minutesI;
-		if (minutesF < minutesI) {
-			minutesT += 60;
-			hoursT -= 1;
-			if (hoursT < 0) {
-				hoursT += 24;
-				daysT -= 1;
+		for (int i = 0; i < 6; i++) {
+			double n = sc.nextDouble();
+			
+			if (n > 0) {
+				list.add(n);
+				qtd++;
 			}
 		}
 		
-		int secondsT = secondsF - secondsI;
-		if (secondsF < secondsI) {
-			secondsT += 60;
-			minutesT -= 1;
-			if (minutesT < 0) {
-				minutesT += 60;
-				hoursT -= 1;
-				if (hoursT < 0) {
-					hoursT += 24;
-					daysT -= 1;
-				}
-				
-			}
+		for (int i = 0; i < list.size(); i++) {
+			media += list.get(i);
 		}
-
 		
-		System.out.println(daysT + " dia(s)");
-		System.out.println(hoursT + " hora(s)");
-		System.out.println(minutesT + " minuto(s)");
-		System.out.println(secondsT + " segundo(s)");
-
+		media = media / list.size();
+		
+		System.out.println(qtd + " valores positivos");
+		System.out.printf("%.1f\n", media);
+		
 		sc.close();
 	}
 }
