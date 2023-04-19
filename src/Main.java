@@ -1,6 +1,4 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,42 +8,50 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		List<Double> notas = new ArrayList<>();
-		double n;
+		int[] ordenado = new int[3];
+		int[] vetor = new int[ordenado.length];
 		
-		for (int i = 0; i < 4; i++) {
-			n = sc.nextDouble();
-			notas.add(n);
+		
+		for (int i = 0; i < ordenado.length; i++) {
+			int n = sc.nextInt();
+			ordenado[i] = n;
 		}
 		
-		double media = ((notas.get(0) * 2) + (notas.get(1) * 3) + (notas.get(2) * 4) + notas.get(3)) / 10;
-		
-		if (media >= 7.0) {
-			System.out.println(media);
-			System.out.println("Aluno aprovado.");
+		for (int i = 0; i < ordenado.length; i++) {
+			vetor[i] = ordenado[i];
 		}
 		
-		else if (media < 5.0) {
-			System.out.println(media);
-			System.out.println("Aluno reprovado.");
+		bubbleSort(ordenado);
+		
+		
+		
+		
+		
+		for (int i = 0; i < ordenado.length; i++) {
+			System.out.println(ordenado[i]);
+		}
+		System.out.println();
+		for (int i = 0; i < vetor.length; i++) {
+			System.out.println(vetor[i]);
 		}
 		
-		else {
-			System.out.println("Aluno em exame.");
-			System.out.print("Nota do exame: ");
-			double exame = sc.nextDouble();
-			media = (media + exame) / 2;
-			
-			if (media >= 5.0) {
-				System.out.println("Aluno aprovado.");
-			}
-			else {
-				System.out.println("Aluno reprovado.");
-			}
-			
-			System.out.println("Media final: " + media);
-		}
 		
 		sc.close();
 	}
+	
+	public static void bubbleSort(int vetor[]) {
+		int aux;
+		int tam = vetor.length;
+
+		for (int i = 0; i < tam - 1; i++) {
+			for (int j = 0; j < tam - 1 - i; j++) {
+				if (vetor[j] > vetor[j + 1]) {
+					aux = vetor[j];
+					vetor[j] = vetor[j + 1];
+					vetor[j + 1] = aux;
+				}
+			}
+		}
+	}
 }
+
