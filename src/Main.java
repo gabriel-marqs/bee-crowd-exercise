@@ -13,7 +13,7 @@ public class Main {
 
 		while (n < 1 || n > 1000) {
 			n = sc.nextInt();
-		
+		}
 
 		for (int i = n; i > 0; i--) {
 			if (i % 2 != 0) {
