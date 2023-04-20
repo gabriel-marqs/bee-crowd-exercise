@@ -8,27 +8,15 @@ public class Main {
 		
 		int n = sc.nextInt();
 		
-		while (n >= 10000) {
+		while (n <= 5 || n >= 2000) {
 			n = sc.nextInt();
 		}
 		
-		int in = 0;
-		int out = 0;
-		for (int i = 0; i < n; i++) {
-			int x = sc.nextInt();
-			while (x < Math.pow(-10, 7) && x > Math.pow(10, 7)) {
-				x = sc.nextInt();
-			}
-			if (x >= 10 && x <= 20) {
-				in++;
-			}
-			else {
-				out++;
-			}
+		for (int i = 2; i <= n; i = i + 2) {
+			double power = Math.pow(i, 2);
+			int res = (int) power;
+			System.out.printf("%d^2 = %d%n", i, res);
 		}
-		
-		System.out.println(in + " in");
-		System.out.println(out + " out");
 		
 		sc.close();
 	}
