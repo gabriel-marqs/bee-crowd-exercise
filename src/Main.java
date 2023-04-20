@@ -7,24 +7,17 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
-		
-		List<Integer> impares = new ArrayList<>();
+
+		int qtd = 0;
 		int n = sc.nextInt();
 
-		while (n < 1 || n > 1000) {
-			n = sc.nextInt();
-		}
-
-		for (int i = n; i > 0; i--) {
+		for (int i = n; qtd < 6; i++) {
 			if (i % 2 != 0) {
-				impares.add(i);
+				qtd++;
+				System.out.println(i);
 			}
 		}
 
-		for (int i = impares.size() - 1; i >= 0; i--) {
-			int aux = impares.get(i);
-			System.out.println(aux);
-		}
 		sc.close();
 	}
 }
