@@ -1,23 +1,29 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
-
-		int qtd = 0;
-		int n = sc.nextInt();
-
-		for (int i = n; qtd < 6; i++) {
+		
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		
+		if (x > y) {
+			int aux = x;
+			x = y;
+			y = aux;			
+		}
+		
+		int soma = 0;
+		for (int i = x + 1; i < y; i++) {
 			if (i % 2 != 0) {
-				qtd++;
-				System.out.println(i);
+				soma += i;
 			}
 		}
-
+		
+		System.out.println(soma);
+		
 		sc.close();
 	}
 }
