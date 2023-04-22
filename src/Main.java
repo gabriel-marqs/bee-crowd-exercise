@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -8,14 +10,37 @@ public class Main {
 		
 		int n = sc.nextInt();
 		
-		while (n <= 5 || n >= 2000) {
+		while (n >= 10000) {
 			n = sc.nextInt();
 		}
 		
-		for (int i = 2; i <= n; i = i + 2) {
-			double power = Math.pow(i, 2);
-			int res = (int) power;
-			System.out.printf("%d^2 = %d%n", i, res);
+		int[] list = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			list[i] = sc.nextInt();		
+		}
+		
+		String pI, pN;
+		for (int i = 0; i < n; i++) {
+			if (list[i] == 0) {
+				System.out.println("null");
+			}
+			else {
+				if (list[i] % 2 == 0) {
+					pI = "EVEN";
+				}
+				else {
+					pI = "ODD";
+				}
+				if (list[i] > 0) {
+					pN = "POSITIVE";
+				}
+				else {
+					pN = "NEGATIVE";
+				}
+				
+				System.out.println(pI + " " + pN);
+			}
 		}
 		
 		sc.close();
