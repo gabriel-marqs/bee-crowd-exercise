@@ -8,14 +8,13 @@ public class Main {
 		
 		int n = sc.nextInt();
 		
-		while (n >= 10000) {
+		while (n < 2 || n >= 1000) {
 			n = sc.nextInt();
 		}
 		
-		for (int i = 0; i <= 10000; i++) {
-			if (i % n == 2) {
-				System.out.println(i);
-			}
+		for (int i = 1; i <= 10; i++) {
+			int mult = n * i;
+			System.out.printf("%d x %d = %d\n", i, n, mult);
 		}
 		
 		sc.close();
